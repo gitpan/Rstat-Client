@@ -1,0 +1,82 @@
+/* $Id: rstat.h.in,v 1.2 2002/05/22 11:15:31 schwenke Exp $
+ *
+ * code generated from SuSE libc-2.1.3-58.rpm /usr/include/rpcsvc/rstat.x
+ * cut down to contain only version 3 interface
+ */
+
+#ifndef RSTAT_H
+#define RSTAT_H
+
+#include <rpc/rpc.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define CPUSTATES 4
+#define DK_NDRIVE 4
+
+struct rstat_timeval {
+	u_int tv_sec;
+	u_int tv_usec;
+};
+typedef struct rstat_timeval rstat_timeval;
+
+struct statstime {
+	int cp_time[CPUSTATES];
+	int dk_xfer[DK_NDRIVE];
+	u_int v_pgpgin;
+	u_int v_pgpgout;
+	u_int v_pswpin;
+	u_int v_pswpout;
+	u_int v_intr;
+	int if_ipackets;
+	int if_ierrors;
+	int if_oerrors;
+	int if_collisions;
+	u_int v_swtch;
+	int avenrun[3];
+	rstat_timeval boottime;
+	rstat_timeval curtime;
+	int if_opackets;
+};
+typedef struct statstime statstime;
+
+#define RSTATPROG 100001
+#define RSTATVERS_TIME 3
+
+#if defined(__STDC__) || defined(__cplusplus)
+#define RSTATPROC_STATS 1
+extern  statstime * rstatproc_stats_3(void *, CLIENT *);
+extern  statstime * rstatproc_stats_3_svc(void *, struct svc_req *);
+#define RSTATPROC_HAVEDISK 2
+extern  u_int * rstatproc_havedisk_3(void *, CLIENT *);
+extern  u_int * rstatproc_havedisk_3_svc(void *, struct svc_req *);
+extern int rstatprog_3_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
+
+#else /* K&R C */
+#define RSTATPROC_STATS 1
+extern  statstime * rstatproc_stats_3();
+extern  statstime * rstatproc_stats_3_svc();
+#define RSTATPROC_HAVEDISK 2
+extern  u_int * rstatproc_havedisk_3();
+extern  u_int * rstatproc_havedisk_3_svc();
+extern int rstatprog_3_freeresult ();
+#endif /* K&R C */
+
+/* the xdr functions */
+
+#if defined(__STDC__) || defined(__cplusplus)
+extern  bool_t xdr_rstat_timeval (XDR *, rstat_timeval*);
+extern  bool_t xdr_statstime (XDR *, statstime*);
+#else /* K&R C */
+extern bool_t xdr_rstat_timeval ();
+extern bool_t xdr_statstime ();
+#endif /* K&R C */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* RSTAT_H */
+

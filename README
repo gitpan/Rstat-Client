@@ -1,0 +1,48 @@
+This is the README file for Rstat::Client
+
+
+INTRODUCTION
+
+    Rstat::Client is a tiny Perl package that provides client access
+    to rstatd(8) statistics for UNIX servers. Connections to rstatd
+    servers are Perl objects, so you may collect statistical data from
+    multiple servers from within one Perl script.
+
+    Using Rstat::Client is as simple as:
+
+    use Rstat::Client;
+    $clnt  = Rstat::Client->new('some.host');
+    $stats = $clnt->fetch();
+    printf 'CPU Load @some.host: %.2f %.2f %.2f\n', @{$stats->{'avenrun'}};
+
+
+PREREQUISITES
+
+    Rstat::Client needs Perl5 and a decent C Compiler; rpcgen(1) and
+    /usr/include/rpcsvc/rstat.x will be handy but are not required.
+
+
+INSTALLATION
+
+    Unpack the distribution archive and chdir into Rstat-Client-xxx.
+    Then type the following commands:
+
+    perl Makefile.pl
+    make
+    make test
+    make install
+
+    Make sure rstatd is running on localhost or 'make test' will fail.
+
+
+LEGAL ISSUES
+
+    Copyright (c) 2002 Axel Schwenke. All rights reserved.
+    This program is free software; you can redistribute it and/or modify
+    it under the same terms as Perl itself.
+
+
+AUTHOR
+
+    Axel Schwenke <axel.schwenke@gmx.net>
+

@@ -1,0 +1,15 @@
+Revision history for Perl extension Rstat::Client
+
+1.0 - 2002/05/19 by XL
+* initial version
+
+1.01 - 2002/05/22 by XL
+* added default rstat implementation for plattforms
+  lacking /usr/include/rpcsvc/rstat.x
+* Makefile.PL tweaking
+
+1.02 - 2002/05/26 by XL
+* rewrite pack.c using macros
+* added C++ guards
+
+

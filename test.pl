@@ -1,4 +1,7 @@
-# $Id: test.pl,v 1.4 2002/05/22 11:03:40 schwenke Exp $
+# $Id: //eai/perl5/Rstat-Client/2.2/src/distro/test.pl#2 $
+
+# Copyright (c) 2008, Morgan Stanley & Co. Incorporated
+# Please see the copyright notice in Client.pm for more information.
 
 BEGIN { $| = 1; print "1..4\n"; }
 END {print "not ok 1\n" unless $loaded;}
